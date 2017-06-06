@@ -2,11 +2,11 @@
  file: new_data.txt
  180 obs. of 68 variables
 
- Identifiers:
+# Identifiers:
 1. subject  - The ID of the test subject
 2. activity  - The type of activity performed when the corresponding measurements were taken
 
- Measurements get with code: dimnames(new_data.txt)                                                                                                                         
+# Measurements get with code: dimnames(new_data.txt)                                                                                                                         
  [3] "TimeDomain.BodyAcceleration.Mean...X"                                    
  [4] "TimeDomain.BodyAcceleration.Mean...Y"                                    
  [5] "TimeDomain.BodyAcceleration.Mean...Z"                                    
