@@ -6,9 +6,7 @@
 1. subject  - The ID of the test subject
 2. activity  - The type of activity performed when the corresponding measurements were taken
 
- Measurements get with code: dimnames(new_data.txt)
- [1] "Subject"                                                                 
- [2] "Activity"                                                                
+ Measurements get with code: dimnames(new_data.txt)                                                                                                                         
  [3] "TimeDomain.BodyAcceleration.Mean...X"                                    
  [4] "TimeDomain.BodyAcceleration.Mean...Y"                                    
  [5] "TimeDomain.BodyAcceleration.Mean...Z"                                    
