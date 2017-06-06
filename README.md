@@ -1,4 +1,4 @@
-##1. Merges the training and the test sets to create one data set.
+## 1. Merges the training and the test sets to create one data set.
 setwd("\\\\tsh.local/DFSRoot/Users/701344/My Documents/2017/Coursera 3/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset")
 library(dplyr)
 subject_train = read.table('./train/subject_train.txt',header=FALSE)
@@ -11,15 +11,15 @@ x_data <- rbind(x_train, x_test)
 y_data <- rbind(y_train, y_test)
 subject_data <- rbind(subject_train, subject_test)
 
-#2. Extracts only the measurements on the mean and standard deviation for each measurement
+## 2. Extracts only the measurements on the mean and standard deviation for each measurement
 x_data_mean_std <- x_data[, grep("-(mean|std)\\(\\)", read.table("features.txt")[, 2])]
 names(x_data_mean_std) <- read.table("features.txt")[grep("-(mean|std)\\(\\)", read.table("features.txt")[, 2]), 2] 
 
-#3. Uses descriptive activity names to name the activities in the data set
+## 3. Uses descriptive activity names to name the activities in the data set
 y_data[, 1] <- read.table("activity_labels.txt")[y_data[, 1], 2]
 names(y_data) <- "Activity"
 
-#4. Appropriately labels the data set with descriptive variable names 
+## 4. Appropriately labels the data set with descriptive variable names 
 names(subject_data) <- "Subject"
 single_data <- cbind(x_data_mean_std, y_data, subject_data)
 names(single_data) <- make.names(names(single_data))
@@ -34,10 +34,10 @@ names(single_data) <- gsub('\\.std',".StandardDeviation",names(single_data))
 names(single_data) <- gsub('Freq\\.',"Frequency.",names(single_data))
 names(single_data) <- gsub('Freq$',"Frequency",names(single_data))
 
-#5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
+## 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
 new_data<-aggregate(. ~Subject + Activity, single_data, mean)
 new_data<-new_data[order(new_data$Subject,new_data$Activity),]
 write.table(new_data, file = "tidydata.txt",row.name=FALSE)
 
-## Save as TXT
+## 6. Save as TXT
 write.table(new_data, "new_data.txt", sep="\t", row.names = FALSE)
